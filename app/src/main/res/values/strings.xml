@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">ApkaNumeroUnoNaAndrioda</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="calculate">Oblicz srednia</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="wpisz_ocene">Wpisz liczbe ocen(5-15)</string>
+    <string name="liczba_ocen">Liczba ocen:</string>
+    <string name="imie">Imię: </string>
+    <string name="wpisz_imie">Wpisz imie</string>
+    <string name="wpisz_nazwisko">Wpisz nazwisko</string>
+    <string name="nazwisko">Nazwisko: </string>
+    <string name="grade">Oceny</string>
+    <string name="subjectNumber">4</string>
+    <string-array name="subjectsList">
+        <item>Matma</item>
+        <item>Polski</item>
+        <item>WF</item>
+        <item>Chemia</item>
+        <item>Geografia</item>
+        <item>Fizyka</item>
+        <item>Biologia</item>
+        <item>Religia</item>
+        <item>Przemiot 9</item>
+        <item>Przedmiot 10</item>
+        <item>Przedmiot 11</item>
+        <item>Przedmiot 12</item>
+        <item>Przedmiot 13</item>
+        <item>Przedmiot 14</item>
+        <item>Przedmiot 15</item>
+    </string-array>
+</resources>
