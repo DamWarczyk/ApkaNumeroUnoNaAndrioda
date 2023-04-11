@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -45,6 +46,8 @@ public class GradeListFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentGradeListBinding.inflate(inflater, container, false);
 
+        MeanViewModel viewModel = new ViewModelProvider(requireActivity()).get(MeanViewModel.class);
+
 
         assert getArguments() != null;
         numberSubject = getArguments().getInt("gradesNumber", 0);
@@ -74,7 +77,7 @@ public class GradeListFragment extends Fragment {
                         mean /= grades.size();
                         bundle.putDouble("mean_score", mean);
                         NavController navigation = NavHostFragment.findNavController(GradeListFragment.this);
-                        Objects.requireNonNull(navigation.getPreviousBackStackEntry()).getSavedStateHandle().set("mean", mean);
+                        viewModel.setMean(mean);
                         navigation.popBackStack();
                     }
                 }

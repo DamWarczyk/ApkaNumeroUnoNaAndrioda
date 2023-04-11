@@ -19,6 +19,9 @@
     <string name="nazwisko">Nazwisko: </string>
     <string name="grade">Oceny</string>
     <string name="subjectNumber">4</string>
+    <string name="your_mean">Twoja srednia: </string>
+    <string name="not_this_time">NIE TYM RAZEM</string>
+    <string name="super_nice">SUPER</string>
     <string-array name="subjectsList">
         <item>Matma</item>
         <item>Polski</item>
