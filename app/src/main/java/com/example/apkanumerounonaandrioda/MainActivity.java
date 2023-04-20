@@ -38,23 +38,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        if (findViewById(R.id.nameEditText) != null){
         EditText name = (EditText) findViewById(R.id.nameEditText);
         EditText surname = (EditText) findViewById(R.id.surnameEditText);
         EditText grade = (EditText) findViewById(R.id.gradeEditText);
         outState.putString("name", name.getText().toString());
         outState.putString("surname", surname.getText().toString());
         outState.putString("grade", grade.getText().toString());
+        }
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        if (findViewById(R.id.nameEditText) != null){
         EditText name = (EditText) findViewById(R.id.nameEditText);
         EditText surname = (EditText) findViewById(R.id.surnameEditText);
         EditText grade = (EditText) findViewById(R.id.gradeEditText);
         name.setText(savedInstanceState.getString("name"));
         surname.setText(savedInstanceState.getString("surname"));
-        grade.setText(savedInstanceState.getString("grade"));
+        grade.setText(savedInstanceState.getString("grade"));}
     }
 
     @Override

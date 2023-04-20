@@ -42,7 +42,7 @@ public class MainPageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,11 +62,12 @@ public class MainPageFragment extends Fragment {
 
         MeanViewModel viewModel = new ViewModelProvider(requireActivity()).get(MeanViewModel.class);
 
-        if (viewModel.getMean() != null){
-        mean = viewModel.getMean();}
+        if (viewModel.getMean() != null) {
+            mean = viewModel.getMean();
+        }
 
         binding.meanValueTextLabel.setText(String.format(String.valueOf(mean)));
-        if (mean == 0.0){
+        if (mean == 0.0) {
             binding.button.setText(String.format(getString(R.string.grade)));
             binding.meanValueTextLabel.setVisibility(View.INVISIBLE);
             binding.meanTextLabel.setVisibility(View.INVISIBLE);
@@ -74,8 +75,7 @@ public class MainPageFragment extends Fragment {
             binding.button.setText(String.format(getString(R.string.not_this_time)));
             binding.meanValueTextLabel.setVisibility(View.VISIBLE);
             binding.meanTextLabel.setVisibility(View.VISIBLE);
-        }
-        else if (mean > 3.0){
+        } else if (mean > 3.0) {
             binding.button.setText(String.format(getString(R.string.super_nice)));
             binding.meanValueTextLabel.setVisibility(View.VISIBLE);
             binding.meanTextLabel.setVisibility(View.VISIBLE);
@@ -85,45 +85,48 @@ public class MainPageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 boolean available = true;
-                if(MainPageFragment.this.mean > 0.0 && binding.nameEditText.getText().toString().isEmpty()){
+                if (MainPageFragment.this.mean > 0.0 && binding.nameEditText.getText().toString().isEmpty()) {
                     binding.nameEditText.setError("Imie jest obowiązkowe");
                     available = false;
                 }
 
-                if(MainPageFragment.this.mean > 0.0 && binding.surnameEditText.getText().toString().isEmpty()) {
+                if (MainPageFragment.this.mean > 0.0 && binding.surnameEditText.getText().toString().isEmpty()) {
                     binding.surnameEditText.setError("Nazwisko jest obowiązkowe");
                     available = false;
                 }
 
-                if(MainPageFragment.this.mean > 0.0 && binding.gradeEditText.getText().toString().isEmpty()){
+                if (MainPageFragment.this.mean > 0.0 && binding.gradeEditText.getText().toString().isEmpty()) {
                     binding.gradeEditText.setError("Ilość ocen jest wymagana");
                     available = false;
                 }
 
+                if (!binding.gradeEditText.getText().toString().isEmpty()){
                 String gradeText = binding.gradeEditText.getText().toString();
-                if(MainPageFragment.this.mean > 0.0 && 5 >= Integer.parseInt(gradeText)  || Integer.parseInt(gradeText) >= 15){
+                if (MainPageFragment.this.mean > 0.0 && 5 < Integer.parseInt(gradeText) || Integer.parseInt(gradeText) > 15) {
                     binding.gradeEditText.setError("Podaj numer z przedziału");
                     available = false;
                 }
+                }
 
 
-                if(available) {
-                    if(MainPageFragment.this.mean == 0.0 && binding.gradeEditText.getError() == null){
+                if (available) {
+                    if (MainPageFragment.this.mean == 0.0 && binding.gradeEditText.getError() == null) {
                         Bundle bundle = new Bundle();
                         String text = binding.gradeEditText.getText().toString();
-                        if(!text.isEmpty()){
+                        if (!text.isEmpty()) {
                             int gradesNumber = Integer.parseInt(text);
                             bundle.putInt("gradesNumber", gradesNumber);
                             navigation.navigate(R.id.action_mainPageFragment_to_gradeListFragment, bundle);
                         }
-                    } else if(MainPageFragment.this.mean < 3.0 && MainPageFragment.this.mean >= 2.0) {
+                    } else if (MainPageFragment.this.mean < 3.0 && MainPageFragment.this.mean >= 2.0) {
                         Toast.makeText(MainPageFragment.this.getActivity(), "Niestety nie udało się", Toast.LENGTH_SHORT).show();
                         MainPageFragment.this.getActivity().finishAffinity();
                     } else if (MainPageFragment.this.mean >= 3.0) {
                         Toast.makeText(MainPageFragment.this.getActivity(), "Gratulacje!!!", Toast.LENGTH_SHORT).show();
                         MainPageFragment.this.getActivity().finishAffinity();
                     }
-            }}
+                }
+            }
         });
 
         binding.nameEditText.addTextChangedListener(
@@ -135,20 +138,18 @@ public class MainPageFragment extends Fragment {
 
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        if (charSequence.toString().isEmpty()){
+                        if (charSequence.toString().isEmpty()) {
                             binding.nameEditText.setError("Imie jest obowiązkowe");
-                        }
-                        else {
+                        } else {
                             binding.nameEditText.setError(null);
                         }
                     }
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        if (binding.nameEditText.getText().toString().isEmpty()){
+                        if (binding.nameEditText.getText().toString().isEmpty()) {
                             binding.nameEditText.setError("Imie jest obowiązkowe");
-                        }
-                        else {
+                        } else {
                             binding.nameEditText.setError(null);
                         }
                     }
@@ -165,20 +166,18 @@ public class MainPageFragment extends Fragment {
 
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        if (charSequence.toString().isEmpty()){
+                        if (charSequence.toString().isEmpty()) {
                             binding.surnameEditText.setError("Nazwisko jest obowiązkowe");
-                        }
-                        else {
+                        } else {
                             binding.surnameEditText.setError(null);
                         }
                     }
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        if (binding.surnameEditText.getText().toString().isEmpty()){
+                        if (binding.surnameEditText.getText().toString().isEmpty()) {
                             binding.surnameEditText.setError("Nazwisko jest obowiązkowe");
-                        }
-                        else {
+                        } else {
                             binding.surnameEditText.setError(null);
                         }
                     }
@@ -193,14 +192,12 @@ public class MainPageFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().isEmpty()){
+                if (charSequence.toString().isEmpty()) {
                     binding.gradeEditText.setError("Ocena jest obowiązkowa");
-                }
-                else {
-                    if(5 >= Integer.parseInt(charSequence.toString())  || Integer.parseInt(charSequence.toString()) >= 15){
+                } else {
+                    if (5 >= Integer.parseInt(charSequence.toString()) || Integer.parseInt(charSequence.toString()) >= 15) {
                         binding.gradeEditText.setError("Podaj numer z przedziału");
-                    }
-                    else {
+                    } else {
                         binding.gradeEditText.setError(null);
                     }
                 }
@@ -208,14 +205,12 @@ public class MainPageFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.toString().isEmpty()){
+                if (editable.toString().isEmpty()) {
                     binding.gradeEditText.setError("Ocena jest obowiązkowa");
-                }
-                else {
-                    if(5 >= Integer.parseInt(editable.toString()) && Integer.parseInt(editable.toString()) >= 15){
+                } else {
+                    if (5 > Integer.parseInt(editable.toString()) || Integer.parseInt(editable.toString()) > 15) {
                         binding.gradeEditText.setError("Podaj numer z przedziału");
-                    }
-                    else {
+                    } else {
                         binding.gradeEditText.setError(null);
                     }
                 }
